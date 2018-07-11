@@ -18,9 +18,8 @@
 
     <div>
       <div class="tab">
-        <button v-for="(value,key,index) in arr" :key="key" v-on:click="changeTab(value)">{{value}}</button>
-        <!-- <button v-on:click="changeTab(2)">2</button>
-        <button v-on:click="changeTab(3)">3</button> -->
+        <button class="btn" v-bind:class="{ active:value == num }" v-for="(value,key,index) in arr" :key="key" v-on:click="changeTab(value)">{{value}}</button>
+        
       </div>
       <div class="tab-content">
         <component v-bind:is="currentTabComponent" v-on:child-tell-me="listenToSon"></component>
@@ -28,8 +27,8 @@
     </div>
   
     <div class="mybox">
-      <first/>
-      <second/>
+      <first name="wzw" />
+      <second age="28" />
     </div>
 
     <div>
@@ -81,7 +80,8 @@ export default {
         a:1,
         b:2
       },
-      currentTabComponent:'first'
+      currentTabComponent:'first',
+      num:1
     }
   },
   created(){
@@ -123,6 +123,7 @@ export default {
   methods:{
     changeTab: function(num){
       
+      this.num = num;
       if(num == 1){
 
         this.currentTabComponent = 'first';
@@ -140,10 +141,12 @@ export default {
     add: function(){
 
       this.arr.push(6);
+      this.currentTabComponent = 'add';
     },
     listenToSon: function(msg){
       // console.log(msg)
       // console.log(1);
+      this.changeTab(1);
       this.currentTabComponent = msg;
     }
 
@@ -155,5 +158,13 @@ export default {
 <style scoped>
 .mybox{
   padding: 20px;
+}
+.btn{
+  width: 100px;
+  height: 30px;
+
+}
+.active{
+  background-color: red;
 }
 </style>

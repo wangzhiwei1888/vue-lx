@@ -1,8 +1,10 @@
 <template>
   <div class="test">
-    
-    <div class="box">second</div>
-    <button @click="sendToFirst">sendToFirst</button>
+    <div class="box">
+      <div class="">{{age}}</div>
+      <div >second</div>
+      <button @click="sendToFirst">sendToFirst</button>
+    </div>
   </div>
 </template>
 
@@ -17,6 +19,7 @@ export default {
       arr:[1,2,3,4,4]
     }
   },
+  props:['age'],
   created(){
 
     
@@ -34,6 +37,7 @@ export default {
 
 <style scoped>
 .box{
+  margin: 10px;
   background-color: red;
 }
 </style>

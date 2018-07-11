@@ -1,7 +1,10 @@
 <template>
   <div class="test">
     
-    <div class="box">{{msg}}</div>
+    <div class="box">
+      <div>{{name}}</div>
+      <div>{{msg}}</div>
+    </div>
 
   </div>
 </template>
@@ -18,6 +21,7 @@ export default {
       msg:'First'
     }
   },
+  props:['name'],
   created(){
 
     

@@ -1,5 +1,7 @@
 <template>
   <div class="test">
+
+    <Loading2/>
     <div refs="name">姓名：{{userInfo.name}}</div>
     <div>年龄：{{userInfo.age}}</div>
 

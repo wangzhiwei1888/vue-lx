@@ -3,10 +3,27 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import Loading from './components/loading/loading'
+
+Vue.use(Loading);
+
 
 Vue.config.productionTip = false;
 Vue.config.silent = true;
 Vue.config.devtools = true
+
+
+//添加全局变量 可以通过 this.URL_PREFIX 获取
+
+// console.log('process.env.NODE_ENV:'+process.env.NODE_ENV)
+if (process.env.NODE_ENV !== 'development') {
+  //生产
+  Vue.prototype.URL_PREFIX = 'http://139.196.7.54'
+
+}else{
+  //开发
+  Vue.prototype.URL_PREFIX = 'http://xxx'
+}
 
 
 var index = 1
